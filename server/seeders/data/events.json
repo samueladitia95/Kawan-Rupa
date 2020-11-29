@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Metallica Concert",
+    "thumbnail_url": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+    "location": "Palace Grounds",
+    "is_paid": true
+  },
+  {
+    "name": "Saree Exhibition",
+    "thumbnail_url": "https://images.unsplash.com/photo-1561490497-43bc900ac2d8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+    "location": "Malleswaram Grounds",
+    "is_paid": false
+  },
+  {
+    "name": "Wine Tasting Event",
+    "thumbnail_url": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+    "location": "Links Brewery",
+    "is_paid": true
+  },
+  {
+    "name": "Startups Meet",
+    "thumbnail_url": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+    "location": "Kanteerava Indoor Stadium",
+    "is_paid": true
+  },
+  {
+    "name": "Summer Noon Party",
+    "thumbnail_url": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+    "location": "Kumara Park",
+    "is_paid": true
+  },
+  {
+    "name": "Rock and Roll Nights",
+    "thumbnail_url": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+    "location": "Sajapur Road",
+    "is_paid": true
+  },
+  {
+    "name": "Barbecue Fridays",
+    "thumbnail_url": "https://images.unsplash.com/photo-1534797258760-1bd2cc95a5bd?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=749&q=80",
+    "location": "Whitefield",
+    "is_paid": true
+  },
+  {
+    "name": "Summer Workshop",
+    "thumbnail_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+    "location": "Indiranagar",
+    "is_paid": false
+  },
+  {
+    "name": "Impressions & Expressions",
+    "thumbnail_url": "https://images.unsplash.com/photo-1579208562480-c2679dd442bd?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+    "location": "MG Road",
+    "is_paid": false
+  },
+  {
+    "name": "Italian Carnival",
+    "thumbnail_url": "https://images.unsplash.com/photo-1582651115119-298a2f2214d1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+    "location": "Electronic City",
+    "is_paid": false
+  }
+]
