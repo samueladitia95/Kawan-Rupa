@@ -2,7 +2,7 @@ import React from "react";
 import { Text, ScrollView, View } from "react-native";
 import { Card, Button, Icon, Tile } from "react-native-elements";
 
-export default function CardView({ events }) {
+export default function CardView({ events, handleToDetail }) {
   return (
     <ScrollView style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
       {events.map((el) => {
@@ -20,6 +20,7 @@ export default function CardView({ events }) {
           //   />
           // </Card>
           <Tile
+            key={el.id}
             imageSrc={{ uri: el.thumbnail_url }}
             title={el.name}
             titleStyle={{ color: "white", backgroundColor: "rgba(0, 0, 0, 0.6);", padding: 10 }}
@@ -28,6 +29,9 @@ export default function CardView({ events }) {
             activeOpacity={1}
             caption={`${el.location} \nCost: ${el.is_paid ? "Paid" : "Free"}`}
             captionStyle={{ color: "white", backgroundColor: "rgba(0, 0, 0, 0.6);", padding: 10 }}
+            onPress={() => {
+              handleToDetail(el.id);
+            }}
           />
         );
       })}

@@ -6,7 +6,7 @@ import { ButtonGroup } from "react-native-elements";
 import Lists from "../components/Lists";
 import Cards from "../components/Cards";
 
-export default function Home() {
+export default function Events({ navigation }) {
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
@@ -33,6 +33,10 @@ export default function Home() {
     }, 1000);
   };
 
+  const handleToDetail = (id) => {
+    navigation.navigate("Detail", { id });
+  };
+
   if (loading) return <Text>Loading</Text>;
 
   return (
@@ -44,7 +48,11 @@ export default function Home() {
         buttons={viewButtons}
         containerStyle={{ height: 40 }}
       />
-      {viewChoice ? <Cards events={events} /> : <Lists events={events} />}
+      {viewChoice ? (
+        <Cards events={events} handleToDetail={handleToDetail} />
+      ) : (
+        <Lists events={events} handleToDetail={handleToDetail} />
+      )}
     </View>
   );
 }
