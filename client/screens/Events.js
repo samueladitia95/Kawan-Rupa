@@ -1,0 +1,57 @@
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { getEvents } from "../store/actions/actionEvents";
+import { ButtonGroup } from "react-native-elements";
+import Lists from "../components/Lists";
+import Cards from "../components/Cards";
+
+export default function Home() {
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(true);
+  const [viewChoice, setViewChoice] = useState(1);
+  const [viewButtons] = useState(["List", "Card"]);
+
+  const { events } = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(getEvents());
+  }, []);
+
+  useEffect(() => {
+    if (events && events.length) {
+      setLoading(false);
+    }
+  }, [events]);
+
+  const handleChangeView = (index) => {
+    setViewChoice(+index);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
+  if (loading) return <Text>Loading</Text>;
+
+  return (
+    <View style={styles.container}>
+      <ButtonGroup
+        onPress={(index) => {
+          handleChangeView(index);
+        }}
+        buttons={viewButtons}
+        containerStyle={{ height: 40 }}
+      />
+      {viewChoice ? <Cards events={events} /> : <Lists events={events} />}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+});
