@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./screens/Home";
 import Events from "./screens/Events";
 import Detail from "./screens/Detail";
+import Tracked from "./screens/Tracked"
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Events" component={Events} />
           <Stack.Screen name="Detail" component={Detail} />
+          <Stack.Screen name="Tracked" component={Tracked} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

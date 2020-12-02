@@ -1,10 +1,11 @@
-"use strictcd";
+"use strict";
 
 const initialState = {
   access_token: "",
   name: "",
   events: [],
   event: {},
+  tracked: [],
 };
 
 export default function reducer(state = initialState, actions) {
@@ -15,6 +16,8 @@ export default function reducer(state = initialState, actions) {
       return { ...state, events: actions.payload.events };
     case "GET ONE EVENT":
       return { ...state, event: actions.payload.event };
+    case "GET TRACKED EVENTS":
+      return { ...state, tracked: actions.payload.tracked };
     default:
       return state;
   }

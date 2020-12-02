@@ -3,6 +3,7 @@ import { Text, ScrollView, View } from "react-native";
 import { Card, Button, Icon, Tile } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneEvent } from "../store/actions/actionEvents";
+import { addTracked } from "../store/actions/actionTracks";
 import { isEmpty } from "lodash";
 
 export default function Detail({ route }) {
@@ -21,6 +22,10 @@ export default function Detail({ route }) {
     }
   }, [event]);
 
+  const handleAddTracked = (EventId) => {
+    dispatch(addTracked(EventID));
+  };
+
   if (loading) return <Text>Loading...</Text>;
 
   return (
@@ -34,7 +39,10 @@ export default function Detail({ route }) {
         <Button
           icon={<Icon name="code" color="#ffffff" />}
           buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-          title="Save Event"
+          title="Tracked Event"
+          onPress={() => {
+            handleAddTracked(event.id);
+          }}
         />
       </Card>
     </View>

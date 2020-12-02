@@ -5,6 +5,7 @@ import { getEvents } from "../store/actions/actionEvents";
 import { ButtonGroup } from "react-native-elements";
 import Lists from "../components/Lists";
 import Cards from "../components/Cards";
+import GestureRecognizer from "react-native-swipe-gestures";
 
 export default function Events({ navigation }) {
   const dispatch = useDispatch();
@@ -37,10 +38,19 @@ export default function Events({ navigation }) {
     navigation.navigate("Detail", { id });
   };
 
+  const handleToTracked = () => {
+    navigation.push("Tracked");
+  };
+
   if (loading) return <Text>Loading</Text>;
 
   return (
-    <View style={styles.container}>
+    <GestureRecognizer
+      onSwipeLeft={() => {
+        handleToTracked();
+      }}
+      style={styles.container}
+    >
       <ButtonGroup
         onPress={(index) => {
           handleChangeView(index);
@@ -53,7 +63,7 @@ export default function Events({ navigation }) {
       ) : (
         <Lists events={events} handleToDetail={handleToDetail} />
       )}
-    </View>
+    </GestureRecognizer>
   );
 }
 
