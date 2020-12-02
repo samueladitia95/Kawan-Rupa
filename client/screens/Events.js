@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvents } from "../store/actions/actionEvents";
 import { ButtonGroup } from "react-native-elements";
 import Lists from "../components/Lists";
 import Cards from "../components/Cards";
+import Loading from "../components/Loading";
 
 export default function Events({ navigation }) {
   const dispatch = useDispatch();
@@ -13,17 +14,17 @@ export default function Events({ navigation }) {
   const [viewChoice, setViewChoice] = useState(1);
   const [viewButtons] = useState(["List", "Card"]);
 
-  const { events } = useSelector((state) => state);
+  const { events, tracked } = useSelector((state) => state);
 
   useEffect(() => {
     dispatch(getEvents());
   }, []);
 
   useEffect(() => {
-    if (events && events.length) {
+    if (events && events.length && tracked.length) {
       setLoading(false);
     }
-  }, [events]);
+  }, [events, tracked]);
 
   const handleChangeView = (index) => {
     setViewChoice(+index);
@@ -37,7 +38,7 @@ export default function Events({ navigation }) {
     navigation.navigate("Detail", { id });
   };
 
-  if (loading) return <Text>Loading...</Text>;
+  if (loading) return <Loading />;
 
   return (
     <View style={{ flex: 1 }}>
@@ -51,7 +52,7 @@ export default function Events({ navigation }) {
       {viewChoice ? (
         <Cards events={events} handleToDetail={handleToDetail} />
       ) : (
-        <Lists events={events} handleToDetail={handleToDetail} />
+        <Lists events={events} tracked={tracked} handleToDetail={handleToDetail} />
       )}
     </View>
   );

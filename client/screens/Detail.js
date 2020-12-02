@@ -5,6 +5,7 @@ import { getOneEvent, emptyEvent } from "../store/actions/actionEvents";
 import { addTracked } from "../store/actions/actionTracks";
 import { isEmpty } from "lodash";
 import { View } from "react-native";
+import Loading from "../components/Loading";
 
 export default function Detail({ route, navigation }) {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function Detail({ route, navigation }) {
     dispatch(addTracked(EventId));
   };
 
-  if (loading) return <Text>Loading...</Text>;
+  if (loading) return <Loading />;
 
   return (
     <View style={{ marginTop: 30 }}>

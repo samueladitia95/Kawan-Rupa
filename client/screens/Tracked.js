@@ -12,7 +12,6 @@ export default function Tracked({ navigation }) {
   const [displayedTracked, setDisplayedTracked] = useState([]);
 
   useEffect(() => {
-    setDisplayedTracked([]);
     dispatch(getTracked());
   }, []);
 

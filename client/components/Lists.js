@@ -1,14 +1,25 @@
 import React from "react";
 import { ScrollView } from "react-native";
-import { ListItem, Avatar, Icon } from "react-native-elements";
+import { ListItem, Avatar } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { addTracked } from "../store/actions/actionTracks";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
-export default function ListView({ events, handleToDetail }) {
+export default function ListView({ events, handleToDetail, tracked }) {
   const dispatch = useDispatch();
 
   const handleAddTracked = (id) => {
     dispatch(addTracked(id));
+  };
+
+  const checkTracked = (id) => {
+    let isAdded = false;
+    tracked.forEach((el) => {
+      if (el.EventId == id) {
+        isAdded = true;
+      }
+    });
+    return isAdded;
   };
 
   return (
@@ -28,10 +39,12 @@ export default function ListView({ events, handleToDetail }) {
             <ListItem.Subtitle>{`Cost: ${el.is_paid ? "Paid" : "Free"}`}</ListItem.Subtitle>
           </ListItem.Content>
           <Icon
-            name="add"
+            name="heart"
+            solid={checkTracked(el.id)}
             onPress={() => {
               handleAddTracked(el.id);
             }}
+            size={30}
           />
         </ListItem>
       ))}
