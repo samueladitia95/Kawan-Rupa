@@ -54,3 +54,19 @@ export const deleteTracked = (id) => {
     }
   };
 };
+
+export const swapOrder = (newOrder) => {
+  return async (dispatch, getState) => {
+    try {
+      await axios({
+        method: "patch",
+        headers: { access_token: getState().access_token },
+        url: `${url}/tracked/swapped`,
+        data: { newOrder },
+      });
+      return dispatch(getTracked());
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};

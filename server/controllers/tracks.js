@@ -13,7 +13,7 @@ class TracksController {
       });
       return res.status(200).json(tracks);
     } catch (err) {
-      return next(er);
+      return next(err);
     }
   }
 
@@ -36,7 +36,7 @@ class TracksController {
         return res.status(201).json(newTracked);
       }
     } catch (err) {
-      return next(er);
+      return next(err);
     }
   }
 
@@ -56,22 +56,25 @@ class TracksController {
         }
       }
     } catch (err) {
-      next(er);
+      next(err);
     }
   }
 
   static async swapOrder(req, res, next) {
     try {
-      const { firstId, secondId } = req.body;
-      const firstEvent = await Track.findByPk(+firstId);
-      const secondEvent = await Track.findByPk(+secondId);
+      const { newOrder } = req.body;
 
-      await Track.update({ order: secondEvent.order }, { where: { id: +firstId } });
-      await Track.update({ order: firstEvent.order }, { where: { id: +secondId } });
+      newOrder.forEach(async (el, i) => {
+        try {
+          await Track.update({ order: i + 1 }, { where: { id: el } });
+        } catch (err) {
+          next(err);
+        }
+      });
 
       res.status(200).json({ message: "Update Success" });
     } catch (err) {
-      next(er);
+      next(err);
     }
   }
 }

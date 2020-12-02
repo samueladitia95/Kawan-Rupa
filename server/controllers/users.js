@@ -18,7 +18,6 @@ class UserController {
         res.status(201).json({ access_token: createToken({ id: newId, name: newName }) });
       }
     } catch (err) {
-      console.log(err, "ERORR");
       next(err);
     }
   }

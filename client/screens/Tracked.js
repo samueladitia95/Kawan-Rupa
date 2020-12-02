@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, ListItem, Avatar, Icon } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
-import { getTracked, deleteTracked } from "../store/actions/actionTracks";
+import { getTracked, deleteTracked, swapOrder } from "../store/actions/actionTracks";
 import GestureRecognizer from "react-native-swipe-gestures";
 import { View } from "react-native";
 import DraggableFlatList from "react-native-draggable-flatlist";
@@ -10,9 +10,17 @@ export default function Tracked({ navigation }) {
   const dispatch = useDispatch();
   const { tracked } = useSelector((state) => state);
 
+  const [displayedTracked, setDisplayedTracked] = useState([]);
+
   useEffect(() => {
     dispatch(getTracked());
   }, []);
+
+  useEffect(() => {
+    if (tracked.length) {
+      setDisplayedTracked(tracked);
+    }
+  }, [tracked]);
 
   const handleToBack = () => {
     navigation.goBack();
@@ -24,6 +32,14 @@ export default function Tracked({ navigation }) {
 
   const handleDelete = (id) => {
     dispatch(deleteTracked(id));
+  };
+
+  const handleReoder = (tracked) => {
+    setDisplayedTracked(tracked);
+    const newOrder = tracked.map((el) => {
+      return el.id;
+    });
+    dispatch(swapOrder(newOrder));
   };
 
   const renderItem = ({ item, index, drag, isActive }) => {
@@ -65,11 +81,11 @@ export default function Tracked({ navigation }) {
     // >
     <View style={{ flex: 1 }}>
       <DraggableFlatList
-        data={tracked}
+        data={displayedTracked}
         renderItem={renderItem}
         keyExtractor={(item) => `draggable-item-${item.id}`}
         onDragEnd={({ data }) => {
-          console.log(data, "REORDER");
+          handleReoder(data);
         }}
       />
     </View>

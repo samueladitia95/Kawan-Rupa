@@ -23,7 +23,7 @@ export default function Home({ navigation }) {
     <View style={styles.container}>
       <Text>Please Enter your Name</Text>
       <Input
-        placeholder="INPUT WITH CUSTOM ICON"
+        placeholder="Please Enter Your Name"
         leftIcon={<Icon name="user" size={24} color="black" />}
         onChangeText={(value) => {
           handleUserInput(value);
