@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView } from "react-native";
-import { ListItem, Avatar } from "react-native-elements";
+import { ListItem, Avatar, Icon } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { addTracked } from "../store/actions/actionTracks";
 
@@ -32,8 +32,8 @@ export default function ListView({ events, handleToDetail }) {
             <ListItem.Subtitle>{`Location: ${el.location}`}</ListItem.Subtitle>
             <ListItem.Subtitle>{`Cost: ${el.is_paid ? "Paid" : "Free"}`}</ListItem.Subtitle>
           </ListItem.Content>
-          <ListItem.Chevron
-            color="red"
+          <Icon
+            name="add"
             onPress={() => {
               handleAddTracked(el.id);
             }}

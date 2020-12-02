@@ -16,7 +16,7 @@ export default function Home({ navigation }) {
 
   const handleUserSubmit = () => {
     dispatch(setUser({ name }));
-    navigation.navigate("Events");
+    navigation.navigate("TabNavigator");
   };
 
   return (

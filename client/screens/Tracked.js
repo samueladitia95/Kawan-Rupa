@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Text, ListItem, Avatar, Icon } from "react-native-elements";
+import { ListItem, Avatar, Icon } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getTracked, deleteTracked, swapOrder } from "../store/actions/actionTracks";
-import GestureRecognizer from "react-native-swipe-gestures";
-import { View } from "react-native";
 import DraggableFlatList from "react-native-draggable-flatlist";
+import { View } from "react-native";
+
+const config = {
+  velocityThreshold: 0.3,
+  directionalOffsetThreshold: 80,
+};
 
 export default function Tracked({ navigation }) {
   const dispatch = useDispatch();
@@ -13,6 +17,7 @@ export default function Tracked({ navigation }) {
   const [displayedTracked, setDisplayedTracked] = useState([]);
 
   useEffect(() => {
+    setDisplayedTracked([]);
     dispatch(getTracked());
   }, []);
 
@@ -21,10 +26,6 @@ export default function Tracked({ navigation }) {
       setDisplayedTracked(tracked);
     }
   }, [tracked]);
-
-  const handleToBack = () => {
-    navigation.goBack();
-  };
 
   const handleToDetail = (id) => {
     navigation.navigate("Detail", { id });
@@ -73,12 +74,6 @@ export default function Tracked({ navigation }) {
   };
 
   return (
-    // <GestureRecognizer
-    //   onSwipeRight={() => {
-    //     handleToBack();
-    //   }}
-    //   style={{ height: 10000 }}
-    // >
     <View style={{ flex: 1 }}>
       <DraggableFlatList
         data={displayedTracked}
@@ -87,8 +82,8 @@ export default function Tracked({ navigation }) {
         onDragEnd={({ data }) => {
           handleReoder(data);
         }}
+        activationDistance={5}
       />
     </View>
-    // </GestureRecognizer>
   );
 }

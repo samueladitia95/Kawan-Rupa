@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Text, ScrollView, View } from "react-native";
-import { Card, Button, Icon, Tile } from "react-native-elements";
+import { Card, Button, Icon, Text } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneEvent } from "../store/actions/actionEvents";
 import { addTracked } from "../store/actions/actionTracks";
 import { isEmpty } from "lodash";
+import { View } from "react-native";
 
-export default function Detail({ route }) {
+export default function Detail({ route, navigation }) {
   const dispatch = useDispatch();
   const { event } = useSelector((state) => state);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function Detail({ route }) {
   if (loading) return <Text>Loading...</Text>;
 
   return (
-    <View>
+    <View style={{ marginTop: 30 }}>
       <Card>
         <Card.Title>{event.name}</Card.Title>
         <Card.Divider />
@@ -39,7 +39,7 @@ export default function Detail({ route }) {
         <Button
           icon={<Icon name="code" color="#ffffff" />}
           buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-          title="Tracked Event"
+          title="Track Event"
           onPress={() => {
             handleAddTracked(event.id);
           }}

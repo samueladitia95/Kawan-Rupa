@@ -4,9 +4,8 @@ import store from "./store";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./screens/Home";
-import Events from "./screens/Events";
 import Detail from "./screens/Detail";
-import Tracked from "./screens/Tracked"
+import TabNavigator from "./screens/TabNavigator";
 
 const Stack = createStackNavigator();
 
@@ -14,11 +13,10 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Events" component={Events} />
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="Detail" component={Detail} />
-          <Stack.Screen name="Tracked" component={Tracked} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

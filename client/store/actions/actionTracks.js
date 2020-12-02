@@ -13,7 +13,6 @@ export const getTracked = () => {
         headers: { access_token: getState().access_token },
         url: `${url}/tracked`,
       });
-      console.log(tracked, "data");
       return dispatch({
         type: GET_TRACKED_EVENTS,
         payload: { tracked },
