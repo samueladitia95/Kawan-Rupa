@@ -5,6 +5,7 @@ import { url } from "../../config";
 
 const GET_EVENTS = "GET EVENTS";
 const GET_ONE_EVENT = "GET ONE EVENT";
+const EMPTY_EVENT = "EMPTY EVENT";
 
 export const getEvents = () => {
   return async (dispatch) => {
@@ -37,5 +38,11 @@ export const getOneEvent = (id) => {
     } catch (err) {
       console.log(err);
     }
+  };
+};
+
+export const emptyEvent = () => {
+  return {
+    type: EMPTY_EVENT,
   };
 };

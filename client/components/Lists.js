@@ -14,21 +14,16 @@ export default function ListView({ events, handleToDetail }) {
   return (
     <ScrollView>
       {events.map((el) => (
-        <ListItem key={el.id} bottomDivider>
-          <Avatar
-            onPress={() => {
-              handleToDetail(el.id);
-            }}
-            source={{ uri: el.thumbnail_url }}
-          />
+        <ListItem
+          key={el.id}
+          bottomDivider
+          onPress={() => {
+            handleToDetail(el.id);
+          }}
+        >
+          <Avatar source={{ uri: el.thumbnail_url }} />
           <ListItem.Content>
-            <ListItem.Title
-              onPress={() => {
-                handleToDetail(el.id);
-              }}
-            >
-              {el.name}
-            </ListItem.Title>
+            <ListItem.Title>{el.name}</ListItem.Title>
             <ListItem.Subtitle>{`Location: ${el.location}`}</ListItem.Subtitle>
             <ListItem.Subtitle>{`Cost: ${el.is_paid ? "Paid" : "Free"}`}</ListItem.Subtitle>
           </ListItem.Content>

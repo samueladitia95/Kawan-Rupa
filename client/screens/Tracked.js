@@ -5,11 +5,6 @@ import { getTracked, deleteTracked, swapOrder } from "../store/actions/actionTra
 import DraggableFlatList from "react-native-draggable-flatlist";
 import { View } from "react-native";
 
-const config = {
-  velocityThreshold: 0.3,
-  directionalOffsetThreshold: 80,
-};
-
 export default function Tracked({ navigation }) {
   const dispatch = useDispatch();
   const { tracked } = useSelector((state) => state);
@@ -43,23 +38,19 @@ export default function Tracked({ navigation }) {
     dispatch(swapOrder(newOrder));
   };
 
-  const renderItem = ({ item, index, drag, isActive }) => {
+  const renderItem = ({ item, index, drag }) => {
     return (
-      <ListItem key={item.id} bottomDivider onLongPress={drag}>
-        <Avatar
-          onPress={() => {
-            handleToDetail(item.Event.id);
-          }}
-          source={{ uri: item.Event.thumbnail_url }}
-        />
+      <ListItem
+        key={item.id}
+        bottomDivider
+        onLongPress={drag}
+        onPress={() => {
+          handleToDetail(item.Event.id);
+        }}
+      >
+        <Avatar source={{ uri: item.Event.thumbnail_url }} />
         <ListItem.Content>
-          <ListItem.Title
-            onPress={() => {
-              handleToDetail(item.Event.id);
-            }}
-          >
-            {item.Event.name}
-          </ListItem.Title>
+          <ListItem.Title>{item.Event.name}</ListItem.Title>
           <ListItem.Subtitle>{`Location: ${item.Event.location}`}</ListItem.Subtitle>
           <ListItem.Subtitle>{`Cost: ${item.Event.is_paid ? "Paid" : "Free"}`}</ListItem.Subtitle>
         </ListItem.Content>
@@ -82,7 +73,7 @@ export default function Tracked({ navigation }) {
         onDragEnd={({ data }) => {
           handleReoder(data);
         }}
-        activationDistance={5}
+        activationDistance={7}
       />
     </View>
   );

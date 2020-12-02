@@ -7,7 +7,7 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function MyTabs() {
   return (
-    <Tab.Navigator style={{marginTop: 30}} >
+    <Tab.Navigator style={{ marginTop: 30 }}>
       <Tab.Screen name="Events" component={Events} />
       <Tab.Screen name="Tracked" component={Tracked} />
     </Tab.Navigator>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvents } from "../store/actions/actionEvents";
 import { ButtonGroup } from "react-native-elements";
@@ -37,22 +37,22 @@ export default function Events({ navigation }) {
     navigation.navigate("Detail", { id });
   };
 
-  if (loading) return <Text>Loading</Text>;
+  if (loading) return <Text>Loading...</Text>;
 
   return (
-      <View>
-        <ButtonGroup
-          onPress={(index) => {
-            handleChangeView(index);
-          }}
-          buttons={viewButtons}
-          containerStyle={{ height: 40 }}
-        />
-        {viewChoice ? (
-          <Cards events={events} handleToDetail={handleToDetail} />
-        ) : (
-          <Lists events={events} handleToDetail={handleToDetail} />
-        )}
-      </View>
+    <View style={{ flex: 1 }}>
+      <ButtonGroup
+        onPress={(index) => {
+          handleChangeView(index);
+        }}
+        buttons={viewButtons}
+        containerStyle={{ height: 40 }}
+      />
+      {viewChoice ? (
+        <Cards events={events} handleToDetail={handleToDetail} />
+      ) : (
+        <Lists events={events} handleToDetail={handleToDetail} />
+      )}
+    </View>
   );
 }

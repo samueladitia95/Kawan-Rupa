@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, ScrollView, View, Dimensions, StyleSheet } from "react-native";
-import { Card, Button, Icon, Tile } from "react-native-elements";
+import { ScrollView, Dimensions, StyleSheet } from "react-native";
+import { Tile } from "react-native-elements";
 
 export default function CardView({ events, handleToDetail }) {
   return (

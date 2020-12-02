@@ -18,6 +18,8 @@ export default function reducer(state = initialState, actions) {
       return { ...state, event: actions.payload.event };
     case "GET TRACKED EVENTS":
       return { ...state, tracked: actions.payload.tracked };
+    case "EMPTY EVENT":
+      return { ...state, event: {} };
     default:
       return state;
   }
