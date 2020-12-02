@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvents } from "../store/actions/actionEvents";
+import { getTracked } from "../store/actions/actionTracks";
 import { ButtonGroup } from "react-native-elements";
 import Lists from "../components/Lists";
 import Cards from "../components/Cards";
@@ -18,10 +19,11 @@ export default function Events({ navigation }) {
 
   useEffect(() => {
     dispatch(getEvents());
+    dispatch(getTracked());
   }, []);
 
   useEffect(() => {
-    if (events && events.length && tracked.length) {
+    if (events && events.length) {
       setLoading(false);
     }
   }, [events, tracked]);

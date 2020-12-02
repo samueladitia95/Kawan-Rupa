@@ -12,13 +12,7 @@ export default function Tracked({ navigation }) {
   const [displayedTracked, setDisplayedTracked] = useState([]);
 
   useEffect(() => {
-    dispatch(getTracked());
-  }, []);
-
-  useEffect(() => {
-    if (tracked.length) {
-      setDisplayedTracked(tracked);
-    }
+    setDisplayedTracked(tracked);
   }, [tracked]);
 
   const handleToDetail = (id) => {
@@ -72,7 +66,7 @@ export default function Tracked({ navigation }) {
         onDragEnd={({ data }) => {
           handleReoder(data);
         }}
-        activationDistance={7}
+        activationDistance={9}
       />
     </View>
   );
