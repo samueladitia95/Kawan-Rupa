@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ListItem, Avatar, Icon } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
-import { getTracked, deleteTracked, swapOrder } from "../store/actions/actionTracks";
+import { deleteTracked, swapOrder } from "../store/actions/actionTracks";
 import DraggableFlatList from "react-native-draggable-flatlist";
 import { View } from "react-native";
 
